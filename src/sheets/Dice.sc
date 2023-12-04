@@ -1,4 +1,4 @@
-import michalz.rpg.traveller.generators.dice.*
+import michalz.rpg.traveller.generators.base.*
 
 def testGen(gen: => DiceGen, num: Int = 10000) =
   List
