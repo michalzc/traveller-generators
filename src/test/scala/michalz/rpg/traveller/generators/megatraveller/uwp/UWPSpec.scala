@@ -1,8 +1,8 @@
-package michalz.rpg.traveller.generators.world.uwp
+package michalz.rpg.traveller.generators.megatraveller.uwp
 
 import munit.FunSuite
 
-class UWPTest extends FunSuite {
+class UWPSpec extends FunSuite {
 
   test("parseUWP should correctly parse UWP for Regina") {
     val uwpStr = "A788899-C"

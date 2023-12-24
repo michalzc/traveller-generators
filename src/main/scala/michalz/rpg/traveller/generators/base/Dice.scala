@@ -12,6 +12,7 @@ object Dice {
 
   implicit class DiceExt(self: DiceGen) {
     def +(num: Int): Gen[Int] = self.map(_ + num)
+    def -(num: Int): Gen[Int] = self.map(_ - num)
   }
 
   case class NumDice(num: Int, dice: () => DiceGen) {
@@ -26,6 +27,7 @@ object Dice {
       Gen.listOfN(num, dice()).map(results => results.sorted.take(knum).sum)
 
     def +(num: Int): DiceGen = toDice + num
+    def -(num: Int): DiceGen = toDice - num
 
     def toDice: DiceGen = Gen.listOfN(num, dice()).map(_.sum)
   }
