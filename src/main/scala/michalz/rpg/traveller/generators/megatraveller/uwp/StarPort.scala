@@ -1,23 +1,19 @@
-package michalz.rpg.traveller.generators.world.uwp
+package michalz.rpg.traveller.generators.megatraveller.uwp
 
 import cats.syntax.option.*
-
-import michalz.rpg.traveller.generators.world.uwp.Fuel.{Refined, Unrefined}
-import michalz.rpg.traveller.generators.world.uwp.Quality.{
-  Excellent,
-  Frontier,
-  Good,
-  Poor,
-  Primitive,
-  Routine
+import michalz.rpg.traveller.generators.megatraveller.uwp.*
+import michalz.rpg.traveller.generators.megatraveller.uwp.Fuel.{
+  Refined,
+  Unrefined
 }
-import michalz.rpg.traveller.generators.world.uwp.Repair.{
+import michalz.rpg.traveller.generators.megatraveller.uwp.Quality.*
+import michalz.rpg.traveller.generators.megatraveller.uwp.Repair.{
   MajorDamage,
   MinorDamage,
   Overhaul,
   Superficial
 }
-import michalz.rpg.traveller.generators.world.uwp.Shipyard.{
+import michalz.rpg.traveller.generators.megatraveller.uwp.Shipyard.{
   Spacecrafts,
   Starships
 }

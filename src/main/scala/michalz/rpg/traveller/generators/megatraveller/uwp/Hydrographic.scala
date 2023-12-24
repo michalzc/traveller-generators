@@ -1,4 +1,4 @@
-package michalz.rpg.traveller.generators.world.uwp
+package michalz.rpg.traveller.generators.megatraveller.uwp
 
 import cats.syntax.either.*
 
