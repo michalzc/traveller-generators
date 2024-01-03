@@ -1,26 +1,26 @@
 package michalz.rpg.traveller.generators.megatraveller
 
 import cats.syntax.option.*
-import michalz.rpg.traveller.generators.base.Dice.{DiceExt, DiceGen, `2d6`, d}
-import michalz.rpg.traveller.generators.base.table.{TableGen, TableRow}
-import michalz.rpg.traveller.generators.megatraveller.starsystem.Nature.{
-  Binary,
-  Solo,
-  Trinary
-}
+import michalz.rpg.traveller.generators.base.Dice.DiceExt
+import michalz.rpg.traveller.generators.base.Dice.DiceGen
+import michalz.rpg.traveller.generators.base.Dice.`2d6`
+import michalz.rpg.traveller.generators.base.Dice.d
+import michalz.rpg.traveller.generators.base.table.TableGen
+import michalz.rpg.traveller.generators.base.table.TableRow
+import michalz.rpg.traveller.generators.megatraveller.starsystem.Nature
+import michalz.rpg.traveller.generators.megatraveller.starsystem.Nature.Binary
+import michalz.rpg.traveller.generators.megatraveller.starsystem.Nature.Solo
+import michalz.rpg.traveller.generators.megatraveller.starsystem.Nature.Trinary
+import michalz.rpg.traveller.generators.megatraveller.starsystem.Star
+import michalz.rpg.traveller.generators.megatraveller.starsystem.StarClass
 import michalz.rpg.traveller.generators.megatraveller.starsystem.StarClass.*
-import michalz.rpg.traveller.generators.megatraveller.starsystem.StarType.{
-  `A`,
-  `F`,
-  `G`,
-  `M`
-}
-import michalz.rpg.traveller.generators.megatraveller.starsystem.{
-  Nature,
-  Star,
-  StarClass,
-  StarType
-}
+import michalz.rpg.traveller.generators.megatraveller.starsystem.StarSystem
+import michalz.rpg.traveller.generators.megatraveller.starsystem.StarType
+import michalz.rpg.traveller.generators.megatraveller.starsystem.StarType.A
+import michalz.rpg.traveller.generators.megatraveller.starsystem.StarType.F
+import michalz.rpg.traveller.generators.megatraveller.starsystem.StarType.G
+import michalz.rpg.traveller.generators.megatraveller.starsystem.StarType.M
+import michalz.rpg.traveller.generators.megatraveller.uwp.PBG
 import michalz.rpg.traveller.generators.megatraveller.uwp.UWP
 import org.scalacheck.Gen
 
@@ -68,7 +68,6 @@ object SystemGenerator {
           StarClass.ClassV
         case _ => starClass
 
-
     for {
       starType <- primaryStarType(dice)
       starDecimal <- d(10) - 1
@@ -82,6 +81,9 @@ object SystemGenerator {
     TableRow(12, Trinary)
   )
 
-  def generate(uwp: Option[String] = none): Gen[StarSystem] = ???
+  def generate(
+      uwp: Option[UWP] = none,
+      pbg: Option[PBG] = none
+  ): Gen[StarSystem] = ???
 
 }
