@@ -1,24 +1,27 @@
 package michalz.rpg.traveller.generators.megatraveller.uwp
 
-import munit.FunSuite
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class UWPSpec extends FunSuite {
+class UWPSpec extends AnyFunSpec with Matchers {
 
-  test("parseUWP should correctly parse UWP for Regina") {
-    val uwpStr = "A788899-C"
-    val result = UWP.parseUWP(uwpStr)
+  describe("parseUWP") {
+    it("should correctly parse UWP for Regina") {
+      val uwpStr = "A788899-C"
+      val result = UWP.parseUWP(uwpStr)
 
-    result match {
-      case Some(uwp) =>
-        assertEquals(uwp.portType, StarPort.A)
-        assertEquals(uwp.worldSize, WorldSize.`7`)
-        assertEquals(uwp.atmosphere, Atmosphere.`8`)
-        assertEquals(uwp.hydrographic, Hydrographic.`8`)
-        assertEquals(uwp.population, Population.`8`)
-        assertEquals(uwp.government, Government.`9`)
-        assertEquals(uwp.lawLevel, LawLevel.`9`)
-        assertEquals(uwp.technologyLevel, TechnologyLevel.`C`)
-      case None => fail("Parsing returned None for valid UWP string")
+      result match {
+        case Some(uwp) =>
+          uwp.portType shouldBe StarPort.A
+          uwp.worldSize shouldBe WorldSize.`7`
+          uwp.atmosphere shouldBe Atmosphere.`8`
+          uwp.hydrographic shouldBe Hydrographic.`8`
+          uwp.population shouldBe Population.`8`
+          uwp.government shouldBe Government.`9`
+          uwp.lawLevel shouldBe LawLevel.`9`
+          uwp.technologyLevel shouldBe TechnologyLevel.`C`
+        case None => fail("Parsing returned None for valid UWP string")
+      }
     }
   }
 }
