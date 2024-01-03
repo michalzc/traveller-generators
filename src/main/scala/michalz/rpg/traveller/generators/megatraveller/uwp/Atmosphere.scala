@@ -10,7 +10,7 @@ enum Atmosphere(
     val minPressure: Option[Float],
     val maxPressure: Option[Float]
 ) extends UWPElement:
-  override def numericValue: Int = this.ordinal
+
   case `0` extends Atmosphere("Vacuum", none, 0f.some)
   case `1` extends Atmosphere("Vacuum (trace)", 0.001f.some, 0.09f.some)
   case `2`

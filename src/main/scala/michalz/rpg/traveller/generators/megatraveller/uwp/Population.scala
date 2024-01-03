@@ -4,7 +4,7 @@ import cats.syntax.option._
 
 enum Population(val description: String, val min: Long, val max: Long)
     extends UWPElement:
-  override def numericValue: Int = this.ordinal
+
 
   case `0` extends Population("Low (less than ten)", 0L, 9L)
   case `1` extends Population("Low (tens)", 10L, 99L)

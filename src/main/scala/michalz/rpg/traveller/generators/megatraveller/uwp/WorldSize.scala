@@ -10,8 +10,6 @@ enum WorldSize(
     maxDiameter: Option[Int]
 ) extends UWPElement:
 
-  override def numericValue: Int = this.ordinal
-  
   case `0` extends WorldSize("Asteroid/Planetoid Belt", none, none, 200.some)
   case `1` extends WorldSize("Small", 1600.some, 800.some, 2399.some)
   case `2` extends WorldSize("Small (Luna)", 3200.some, 2400.some, 3999.some)

@@ -3,7 +3,7 @@ package michalz.rpg.traveller.generators.megatraveller.uwp
 import cats.syntax.option._
 
 enum TechnologyLevel(val description: String) extends UWPElement:
-  override def numericValue: Int = this.ordinal
+
 
   case `0` extends TechnologyLevel("Pre-industrial (primitive)")
   case `1` extends TechnologyLevel("Pre-industrial (bronze, iron)")

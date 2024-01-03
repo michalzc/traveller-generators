@@ -3,7 +3,7 @@ package michalz.rpg.traveller.generators.megatraveller.uwp
 import cats.syntax.option._
 
 enum LawLevel(val description: String) extends UWPElement:
-  override def numericValue: Int = this.ordinal
+
   case `0` extends LawLevel("No law (no prohibitions)")
   case `1` extends LawLevel("Low law (body pistols, explosives, poison gas prohibited)")
   case `2` extends LawLevel("Low law (portable energy weapons prohibited)")

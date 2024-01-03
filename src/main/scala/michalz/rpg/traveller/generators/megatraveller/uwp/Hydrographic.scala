@@ -8,7 +8,7 @@ enum Hydrographic(
     val minimumPercentage: Byte,
     val maximumPercentage: Byte
 ) extends UWPElement:
-  override def numericValue: Int = this.ordinal
+
   case `0` extends Hydrographic("Desert World", 0, 0, 4)
   case `1` extends Hydrographic("Dry World", 10, 5, 14)
   case `2` extends Hydrographic("Dry World", 20, 15, 24)

@@ -3,7 +3,6 @@ package michalz.rpg.traveller.generators.megatraveller.uwp
 import cats.syntax.option.*
 
 enum Government(val description: String) extends UWPElement:
-  override def numericValue: Int = this.ordinal
 
   case `0` extends Government("No Government Structure")
   case `1` extends Government("Company/Corporation")
