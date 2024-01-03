@@ -4,7 +4,7 @@ import scala.collection.immutable.TreeMap
 
 case class StarSystem(
     mainBody: SystemBody,
-    bodies: Map[OrbitNumber, SystemBody]
+    bodies: Map[OrbitNumber, SystemBody],
 ) extends SystemBody:
   def get(orbitNumber: OrbitNumber): Option[SystemBody] =
     bodies.get(orbitNumber)
@@ -15,7 +15,7 @@ case class StarSystem(
 object StarSystem:
   def apply(
       mainBody: SystemBody,
-      elems: (OrbitNumber, SystemBody)*
+      elems: (OrbitNumber, SystemBody)*,
   ): StarSystem =
     StarSystem(mainBody = mainBody, bodies = TreeMap(elems: _*))
 

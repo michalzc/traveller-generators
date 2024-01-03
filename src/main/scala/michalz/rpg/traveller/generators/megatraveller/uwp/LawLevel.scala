@@ -49,4 +49,4 @@ object LawLevel:
     case "J" => LawLevel.`J`.some
     case "K" => LawLevel.`K`.some
     case "L" => LawLevel.`L`.some
-    case _ => none
+    case _   => none

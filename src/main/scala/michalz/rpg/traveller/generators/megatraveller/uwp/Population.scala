@@ -2,9 +2,7 @@ package michalz.rpg.traveller.generators.megatraveller.uwp
 
 import cats.syntax.option._
 
-enum Population(val description: String, val min: Long, val max: Long)
-    extends UWPElement:
-
+enum Population(val description: String, val min: Long, val max: Long) extends UWPElement:
 
   case `0` extends Population("Low (less than ten)", 0L, 9L)
   case `1` extends Population("Low (tens)", 10L, 99L)
@@ -14,11 +12,9 @@ enum Population(val description: String, val min: Long, val max: Long)
   case `5` extends Population("Mod (hundreds of thousands)", 100000L, 999999L)
   case `6` extends Population("Mod (millions)", 1000000L, 9999999L)
   case `7` extends Population("Mod (tens of millions)", 10000000L, 99999999L)
-  case `8`
-      extends Population("Mod (hundreds of millions)", 100000000L, 999999999L)
+  case `8` extends Population("Mod (hundreds of millions)", 100000000L, 999999999L)
   case `9` extends Population("High (billions)", 1000000000L, 9999999999L)
-  case `A`
-      extends Population("High (ten of billions)", 10000000000L, 99999999999L)
+  case `A` extends Population("High (ten of billions)", 10000000000L, 99999999999L)
 
 object Population:
   def fromSymbol(symbol: String): Option[Population] = symbol match

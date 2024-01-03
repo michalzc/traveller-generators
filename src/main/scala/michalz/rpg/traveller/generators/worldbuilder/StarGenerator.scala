@@ -1,11 +1,11 @@
 package michalz.rpg.traveller.generators.worldbuilder
 
-import michalz.rpg.traveller.generators.base.*
-import michalz.rpg.traveller.generators.base.Dice.*
-import michalz.rpg.traveller.generators.base.table.{TableGen, TableRow}
-import org.scalacheck.Gen
-
 import cats.syntax.option.*
+import michalz.rpg.traveller.generators.base.*
+import michalz.rpg.traveller.generators.base.table.TableGen
+import michalz.rpg.traveller.generators.base.table.TableRow
+import michalz.rpg.traveller.generators.base.Dice.*
+import org.scalacheck.Gen
 
 object StarGenerator {
 
@@ -21,7 +21,7 @@ object StarGenerator {
     TableRow(9, 6),
     TableRow(10, 4),
     TableRow(11, 2),
-    TableRow(12, 0)
+    TableRow(12, 0),
   )
 
   def starSubTypeMPrimary(diceGen: DiceGen = Dice.`2d6`): Gen[Int] = TableGen(
@@ -36,7 +36,7 @@ object StarGenerator {
     TableRow(9, 3),
     TableRow(10, 5),
     TableRow(11, 7),
-    TableRow(12, 9)
+    TableRow(12, 9),
   )
 
   def starSubTypeGen(starType: StarType, isPrimary: Boolean): Gen[Int] =
@@ -55,7 +55,7 @@ object StarGenerator {
 
   def genStar(
       genType: StarGeneratorType,
-      diceGen: DiceGen = Dice.`2d6`
+      diceGen: DiceGen = Dice.`2d6`,
   ): Gen[StarLike] = genType match
     case StarGeneratorType.Primary        => generatePrimaryStar()
     case StarGeneratorType.PrimaryUnusual => ???

@@ -6,7 +6,7 @@ enum Hydrographic(
     val description: String,
     val percentage: Byte,
     val minimumPercentage: Byte,
-    val maximumPercentage: Byte
+    val maximumPercentage: Byte,
 ) extends UWPElement:
 
   case `0` extends Hydrographic("Desert World", 0, 0, 4)
@@ -24,9 +24,9 @@ enum Hydrographic(
 object Hydrographic:
   def fromSymbol(symbol: String): Option[Hydrographic] = (for {
     decimalRepresentation <- Either.catchNonFatal(
-      Integer.parseInt(symbol, 16)
+      Integer.parseInt(symbol, 16),
     )
     value <- Either.catchNonFatal(
-      Hydrographic.fromOrdinal(decimalRepresentation)
+      Hydrographic.fromOrdinal(decimalRepresentation),
     )
   } yield value).toOption

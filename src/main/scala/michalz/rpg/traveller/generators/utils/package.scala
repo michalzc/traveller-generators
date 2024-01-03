@@ -1,7 +1,8 @@
 package michalz.rpg.traveller.generators
 
 package object utils {
-  def groupResults[T: Ordering](results: List[T]): List[(T, Int)] = results.groupBy(i => i).toList.map { case (v, a) => v -> a.size }.sortBy(_._1)
+  def groupResults[T: Ordering](results: List[T]): List[(T, Int)] =
+    results.groupBy(i => i).toList.map { case (v, a) => v -> a.size }.sortBy(_._1)
 
   def histogram[T](data: List[(T, Int)], barWidth: Int = 20): List[String] =
     val maxVal        = data.map(_._2).max

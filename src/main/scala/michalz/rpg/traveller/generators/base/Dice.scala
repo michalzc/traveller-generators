@@ -32,8 +32,7 @@ object Dice {
     def toDice: DiceGen = Gen.listOfN(num, dice()).map(_.sum)
   }
 
-  implicit val numDiceToDice: Conversion[NumDice, DiceGen] = (x: NumDice) =>
-    x.toDice
+  implicit val numDiceToDice: Conversion[NumDice, DiceGen] = (x: NumDice) => x.toDice
 
   def d(num: Int): DiceGen = Gen.choose(1, num)
 

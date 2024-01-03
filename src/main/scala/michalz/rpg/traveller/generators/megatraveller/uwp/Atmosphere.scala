@@ -1,20 +1,18 @@
 package michalz.rpg.traveller.generators.megatraveller.uwp
 
-import cats.syntax.option.*
 import cats.syntax.either.*
-
+import cats.syntax.option.*
 import scala.util.control.Exception.catching
 
 enum Atmosphere(
     val description: String,
     val minPressure: Option[Float],
-    val maxPressure: Option[Float]
+    val maxPressure: Option[Float],
 ) extends UWPElement:
 
   case `0` extends Atmosphere("Vacuum", none, 0f.some)
   case `1` extends Atmosphere("Vacuum (trace)", 0.001f.some, 0.09f.some)
-  case `2`
-      extends Atmosphere("Vacuum (very thin, tainted)", 0.1f.some, 0.42f.some)
+  case `2` extends Atmosphere("Vacuum (very thin, tainted)", 0.1f.some, 0.42f.some)
   case `3` extends Atmosphere("Vacuum (very thin)", 0.1f.some, 0.42f.some)
   case `4` extends Atmosphere("Thin (tainted)", 0.43f.some, 0.7f.some)
   case `5` extends Atmosphere("Thin", 0.43f.some, 0.7f.some)
@@ -32,5 +30,5 @@ enum Atmosphere(
 object Atmosphere:
   def fromSymbol(symbol: String): Option[Atmosphere] = (for {
     decimal <- Either.catchNonFatal(Integer.parseInt(symbol, 16))
-    value <- Either.catchNonFatal(Atmosphere.fromOrdinal(decimal))
+    value   <- Either.catchNonFatal(Atmosphere.fromOrdinal(decimal))
   } yield value).toOption

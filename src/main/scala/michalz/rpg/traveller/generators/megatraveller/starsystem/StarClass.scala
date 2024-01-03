@@ -7,5 +7,3 @@ enum StarClass:
   case ClassV
   case ClassVI
   case Dwarf
-
-

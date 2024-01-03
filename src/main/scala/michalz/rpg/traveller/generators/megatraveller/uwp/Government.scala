@@ -39,6 +39,6 @@ object Government {
     case "D" => Government.`D`.some
     case "E" => Government.`E`.some
     case "F" => Government.`F`.some
-    case _ => none[Government]
+    case _   => none[Government]
   }
 }

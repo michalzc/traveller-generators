@@ -4,5 +4,3 @@ enum Nature:
   case Solo
   case Binary
   case Trinary
-
-

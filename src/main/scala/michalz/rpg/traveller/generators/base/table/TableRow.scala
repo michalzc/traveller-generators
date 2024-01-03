@@ -5,7 +5,7 @@ import org.scalacheck.Gen
 case class TableRow[T](
     min: Int,
     max: Int,
-    generator: Int => Gen[T]
+    generator: Int => Gen[T],
 )
 
 object TableRow {

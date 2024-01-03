@@ -8,5 +8,5 @@ case class StarSystem(
     nearOrbitStar: Option[StarLike],
     nearOrbitCompanion: Option[StarLike],
     farOrbitStar: Option[StarLike],
-    farOrbitCompanion: Option[StarLike]
+    farOrbitCompanion: Option[StarLike],
 )

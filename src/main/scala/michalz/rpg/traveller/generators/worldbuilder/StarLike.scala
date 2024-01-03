@@ -9,24 +9,18 @@ enum StarClass:
 sealed trait StarLike
 
 case class Star(
-                 starType: StarType,
-                 starClass: StarClass,
-                 starSubtype: Option[Int]
-               ) extends StarLike {
+    starType: StarType,
+    starClass: StarClass,
+    starSubtype: Option[Int],
+) extends StarLike {
 
-  override def toString: String = s"${starType}${starSubtype.getOrElse("")} ${starClass}"
+  override def toString: String = s"$starType${starSubtype.getOrElse("")} $starClass"
 }
 
-
-case class BlackHole(desc: String) extends StarLike
-case class Pulsar(desc: String) extends StarLike
+case class BlackHole(desc: String)   extends StarLike
+case class Pulsar(desc: String)      extends StarLike
 case class NeutronStar(desc: String) extends StarLike
-case class Nebula(desc: String) extends StarLike
-case class ProtoStar(desc: String) extends StarLike
+case class Nebula(desc: String)      extends StarLike
+case class ProtoStar(desc: String)   extends StarLike
 case class StarCluster(desc: String) extends StarLike
-case class Anomaly(desc: String) extends StarLike
-
-
-
-
-
+case class Anomaly(desc: String)     extends StarLike
