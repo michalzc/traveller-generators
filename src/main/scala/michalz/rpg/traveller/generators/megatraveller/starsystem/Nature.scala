@@ -4,3 +4,5 @@ enum Nature:
   case Solo
   case Binary
   case Trinary
+
+  def extraStars: Int = ordinal

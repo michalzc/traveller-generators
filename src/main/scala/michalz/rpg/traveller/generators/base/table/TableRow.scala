@@ -18,5 +18,4 @@ object TableRow {
 
   def apply[P, T](num: Int, generatorFun: Int => Gen[T]): TableRow[T] =
     TableRow(min = num, max = num, generator = generatorFun)
-
 }
