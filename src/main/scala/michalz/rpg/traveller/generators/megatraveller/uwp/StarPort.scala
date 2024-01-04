@@ -44,12 +44,7 @@ sealed trait PortType:
   def repair: Repair
   def shipyard: Shipyard
 
-enum StarPort(
-    val quality: Quality,
-    val shipyard: Shipyard,
-    val repair: Repair,
-    val fuel: Fuel,
-) extends PortType:
+enum StarPort(val quality: Quality, val shipyard: Shipyard, val repair: Repair, val fuel: Fuel) extends PortType:
   case `A` extends StarPort(Excellent, Starships, Overhaul, Refined)
   case `B` extends StarPort(Good, Spacecrafts, Overhaul, Refined)
   case `C` extends StarPort(Routine, Shipyard.None, MajorDamage, Unrefined)
@@ -57,28 +52,35 @@ enum StarPort(
   case `E` extends StarPort(Frontier, Shipyard.None, Repair.None, Fuel.None)
   case `X` extends StarPort(Quality.None, Shipyard.None, Repair.None, Fuel.None)
 
-enum SpacePort(
-    val quality: Quality,
-    val shipyard: Shipyard,
-    val repair: Repair,
-    val fuel: Fuel,
-) extends PortType:
+enum SpacePort(val quality: Quality, val shipyard: Shipyard, val repair: Repair, val fuel: Fuel) extends PortType:
   case `F` extends SpacePort(Good, Shipyard.None, MinorDamage, Unrefined)
   case `G` extends SpacePort(Poor, Shipyard.None, Superficial, Unrefined)
   case `H` extends SpacePort(Primitive, Shipyard.None, Repair.None, Fuel.None)
   case `Y` extends SpacePort(Quality.None, Shipyard.None, Repair.None, Fuel.None)
 
 object PortType:
-  def fromSymbol(symbol: String): Option[PortType] = symbol match {
-    case "A" => StarPort.`A`.some
-    case "B" => StarPort.`B`.some
-    case "C" => StarPort.`C`.some
-    case "D" => StarPort.`D`.some
-    case "E" => StarPort.`E`.some
-    case "F" => SpacePort.`F`.some
-    case "G" => SpacePort.`G`.some
-    case "H" => SpacePort.`H`.some
-    case "Y" => SpacePort.`Y`.some
-    case "X" => StarPort.`X`.some
-    case _   => none
-  }
+  def fromSymbol(symbol: String): Option[PortType] =
+    symbol match {
+      case "A" =>
+        StarPort.`A`.some
+      case "B" =>
+        StarPort.`B`.some
+      case "C" =>
+        StarPort.`C`.some
+      case "D" =>
+        StarPort.`D`.some
+      case "E" =>
+        StarPort.`E`.some
+      case "F" =>
+        SpacePort.`F`.some
+      case "G" =>
+        SpacePort.`G`.some
+      case "H" =>
+        SpacePort.`H`.some
+      case "Y" =>
+        SpacePort.`Y`.some
+      case "X" =>
+        StarPort.`X`.some
+      case _ =>
+        none
+    }

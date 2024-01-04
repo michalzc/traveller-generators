@@ -18,9 +18,7 @@ object Dice {
   case class NumDice(num: Int, dice: () => DiceGen) {
     def kh(knum: Int): DiceGen =
       require(num >= knum)
-      Gen
-        .listOfN(num, dice())
-        .map(results => results.sorted.drop(num - knum).sum)
+      Gen.listOfN(num, dice()).map(results => results.sorted.drop(num - knum).sum)
 
     def kl(knum: Int): DiceGen =
       require(num >= knum)

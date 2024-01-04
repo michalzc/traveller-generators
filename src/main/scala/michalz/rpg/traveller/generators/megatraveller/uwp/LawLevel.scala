@@ -27,26 +27,49 @@ enum LawLevel(val description: String) extends UWPElement:
   case `L` extends LawLevel("Extreme law (totally oppressive and restrictive)")
 
 object LawLevel:
-  def fromSymbol(symbol: String): Option[LawLevel] = symbol match
-    case "0" => LawLevel.`0`.some
-    case "1" => LawLevel.`1`.some
-    case "2" => LawLevel.`2`.some
-    case "3" => LawLevel.`3`.some
-    case "4" => LawLevel.`4`.some
-    case "5" => LawLevel.`5`.some
-    case "6" => LawLevel.`6`.some
-    case "7" => LawLevel.`7`.some
-    case "8" => LawLevel.`8`.some
-    case "9" => LawLevel.`9`.some
-    case "A" => LawLevel.`A`.some
-    case "B" => LawLevel.`B`.some
-    case "C" => LawLevel.`C`.some
-    case "D" => LawLevel.`D`.some
-    case "E" => LawLevel.`E`.some
-    case "F" => LawLevel.`F`.some
-    case "G" => LawLevel.`G`.some
-    case "H" => LawLevel.`H`.some
-    case "J" => LawLevel.`J`.some
-    case "K" => LawLevel.`K`.some
-    case "L" => LawLevel.`L`.some
-    case _   => none
+  def fromSymbol(symbol: String): Option[LawLevel] =
+    symbol match
+      case "0" =>
+        LawLevel.`0`.some
+      case "1" =>
+        LawLevel.`1`.some
+      case "2" =>
+        LawLevel.`2`.some
+      case "3" =>
+        LawLevel.`3`.some
+      case "4" =>
+        LawLevel.`4`.some
+      case "5" =>
+        LawLevel.`5`.some
+      case "6" =>
+        LawLevel.`6`.some
+      case "7" =>
+        LawLevel.`7`.some
+      case "8" =>
+        LawLevel.`8`.some
+      case "9" =>
+        LawLevel.`9`.some
+      case "A" =>
+        LawLevel.`A`.some
+      case "B" =>
+        LawLevel.`B`.some
+      case "C" =>
+        LawLevel.`C`.some
+      case "D" =>
+        LawLevel.`D`.some
+      case "E" =>
+        LawLevel.`E`.some
+      case "F" =>
+        LawLevel.`F`.some
+      case "G" =>
+        LawLevel.`G`.some
+      case "H" =>
+        LawLevel.`H`.some
+      case "J" =>
+        LawLevel.`J`.some
+      case "K" =>
+        LawLevel.`K`.some
+      case "L" =>
+        LawLevel.`L`.some
+      case _ =>
+        none

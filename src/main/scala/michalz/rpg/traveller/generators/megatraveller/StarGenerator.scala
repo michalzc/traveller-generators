@@ -18,15 +18,17 @@ case class StarClassWithRoll(starClass: StarClass, roll: Int):
 case class StarWithRolls(star: Star, typeRoll: Int, classRoll: Int)
 
 object StarWithRolls:
-  def apply(typeWithRoll: StarTypeWithRoll, decimalType: Int, classWithRoll: StarClassWithRoll): StarWithRolls = StarWithRolls(
-    Star(typeWithRoll.starType, decimalType, classWithRoll.starClass),
-    typeWithRoll.roll,
-    classWithRoll.roll,
-  )
+  def apply(typeWithRoll: StarTypeWithRoll, decimalType: Int, classWithRoll: StarClassWithRoll): StarWithRolls =
+    StarWithRolls(
+      Star(typeWithRoll.starType, decimalType, classWithRoll.starClass),
+      typeWithRoll.roll,
+      classWithRoll.roll,
+    )
 
 object StarGenerator:
 
-  private def typeWithRoll(starType: StarType)(roll: Int): Gen[StarTypeWithRoll] = Gen.const(StarTypeWithRoll(starType, roll))
+  private def typeWithRoll(starType: StarType)(roll: Int): Gen[StarTypeWithRoll] = Gen
+    .const(StarTypeWithRoll(starType, roll))
 
   def primaryStarType(dice: DiceGen = `2d6`): Gen[StarTypeWithRoll] = TableGen(
     dice,
@@ -37,7 +39,8 @@ object StarGenerator:
     TableRow(10, 12, typeWithRoll(StarType.F)),
   )
 
-  private def classWithRoll(starClass: StarClass)(roll: Int): Gen[StarClassWithRoll] = Gen.const(StarClassWithRoll(starClass, roll))
+  private def classWithRoll(starClass: StarClass)(roll: Int): Gen[StarClassWithRoll] = Gen
+    .const(StarClassWithRoll(starClass, roll))
 
   def primaryStarClass(dice: DiceGen = `2d6`): Gen[StarClassWithRoll] = TableGen(
     dice,
@@ -71,8 +74,8 @@ object StarGenerator:
           `2d6`
       .getOrElse(`2d6`)
 
-    def starClassGen(dice: DiceGen, starType: StarTypeWithRoll, decimalType: Int): Gen[StarClassWithRoll] = primaryStarClass(dice).map:
-      starClass =>
+    def starClassGen(dice: DiceGen, starType: StarTypeWithRoll, decimalType: Int): Gen[StarClassWithRoll] =
+      primaryStarClass(dice).map: starClass =>
         (starClass.starClass, starType.starType) match
           case (StarClass.ClassIV, StarType.`K`) if decimalType >= 5 =>
             starClass.withClass(StarClass.ClassV)

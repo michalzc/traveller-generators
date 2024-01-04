@@ -1,7 +1,10 @@
 package michalz.rpg.traveller.generators.megatraveller
 
-import michalz.rpg.traveller.generators.base.Dice.{DiceGen, `2d6`, d6}
-import michalz.rpg.traveller.generators.base.table.{TableGen, TableRow}
+import michalz.rpg.traveller.generators.base.table.TableGen
+import michalz.rpg.traveller.generators.base.table.TableRow
+import michalz.rpg.traveller.generators.base.Dice.`2d6`
+import michalz.rpg.traveller.generators.base.Dice.d6
+import michalz.rpg.traveller.generators.base.Dice.DiceGen
 import michalz.rpg.traveller.generators.megatraveller.starsystem.Orbit
 import org.scalacheck.Gen
 

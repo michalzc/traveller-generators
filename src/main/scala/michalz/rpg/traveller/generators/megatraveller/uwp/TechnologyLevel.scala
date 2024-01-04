@@ -29,25 +29,47 @@ enum TechnologyLevel(val description: String) extends UWPElement:
 object TechnologyLevel:
   def fromSymbol(symbol: String): Option[TechnologyLevel] =
     symbol match
-      case "0" => `0`.some
-      case "1" => `1`.some
-      case "2" => `2`.some
-      case "3" => `3`.some
-      case "4" => `4`.some
-      case "5" => `5`.some
-      case "6" => `6`.some
-      case "7" => `7`.some
-      case "8" => `8`.some
-      case "9" => `9`.some
-      case "A" => `A`.some
-      case "B" => `B`.some
-      case "C" => `C`.some
-      case "D" => `D`.some
-      case "E" => `E`.some
-      case "F" => `F`.some
-      case "G" => `G`.some
-      case "H" => `H`.some
-      case "J" => `J`.some
-      case "K" => `K`.some
-      case "L" => `L`.some
-      case _   => none
+      case "0" =>
+        `0`.some
+      case "1" =>
+        `1`.some
+      case "2" =>
+        `2`.some
+      case "3" =>
+        `3`.some
+      case "4" =>
+        `4`.some
+      case "5" =>
+        `5`.some
+      case "6" =>
+        `6`.some
+      case "7" =>
+        `7`.some
+      case "8" =>
+        `8`.some
+      case "9" =>
+        `9`.some
+      case "A" =>
+        `A`.some
+      case "B" =>
+        `B`.some
+      case "C" =>
+        `C`.some
+      case "D" =>
+        `D`.some
+      case "E" =>
+        `E`.some
+      case "F" =>
+        `F`.some
+      case "G" =>
+        `G`.some
+      case "H" =>
+        `H`.some
+      case "J" =>
+        `J`.some
+      case "K" =>
+        `K`.some
+      case "L" =>
+        `L`.some
+      case _ =>
+        none

@@ -3,12 +3,8 @@ package michalz.rpg.traveller.generators.megatraveller.uwp
 import cats.syntax.either.*
 import cats.syntax.option.*
 
-enum WorldSize(
-    description: String,
-    diameter: Option[Int],
-    minDiameter: Option[Int],
-    maxDiameter: Option[Int],
-) extends UWPElement:
+enum WorldSize(description: String, diameter: Option[Int], minDiameter: Option[Int], maxDiameter: Option[Int])
+    extends UWPElement:
 
   case `0` extends WorldSize("Asteroid/Planetoid Belt", none, none, 200.some)
   case `1` extends WorldSize("Small", 1600.some, 800.some, 2399.some)
@@ -29,8 +25,11 @@ enum WorldSize(
   case LGG extends WorldSize("Large Gas Giant", none, none, none)
 
 object WorldSize:
-  def fromSymbol(symbol: String): Option[WorldSize] = (for {
-    decimal   <- Either.catchNonFatal(Integer.parseInt(symbol, 16))
-    _         <- Either.cond(decimal <= 0xa, (), RuntimeException("Invalid value"))
-    worldSize <- Either.catchNonFatal(WorldSize.fromOrdinal(decimal))
-  } yield worldSize).toOption
+  def fromSymbol(symbol: String): Option[WorldSize] =
+    (
+      for {
+        decimal   <- Either.catchNonFatal(Integer.parseInt(symbol, 16))
+        _         <- Either.cond(decimal <= 0xa, (), RuntimeException("Invalid value"))
+        worldSize <- Either.catchNonFatal(WorldSize.fromOrdinal(decimal))
+      } yield worldSize
+    ).toOption

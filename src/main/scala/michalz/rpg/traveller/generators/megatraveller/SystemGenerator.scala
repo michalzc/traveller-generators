@@ -12,11 +12,11 @@ import michalz.rpg.traveller.generators.megatraveller.starsystem.Nature
 import michalz.rpg.traveller.generators.megatraveller.starsystem.Orbit
 import michalz.rpg.traveller.generators.megatraveller.starsystem.Star
 import michalz.rpg.traveller.generators.megatraveller.starsystem.StarSystem
-import OrbitsGenerator.companionOrbitGenerator
 import michalz.rpg.traveller.generators.megatraveller.uwp.PBG
 import michalz.rpg.traveller.generators.megatraveller.uwp.UWP
 import michalz.rpg.traveller.generators.megatraveller.StarGenerator.otherStarGenerator
 import org.scalacheck.Gen
+import OrbitsGenerator.companionOrbitGenerator
 
 object SystemGenerator:
 
@@ -43,18 +43,17 @@ object SystemGenerator:
 
   private def handleSoloNature(): Gen[List[(Orbit, Star)]] = Gen.const(List.empty)
 
-  private def handleBinaryNature(mainStarWithRolls: StarWithRolls, dice: DiceGen): Gen[List[(Orbit, Star)]] = toTuple2Gen(
-    companionOrbitGenerator(),
-    otherStarGenerator(mainStarWithRolls, dice),
-  ).map(List(_))
+  private def handleBinaryNature(mainStarWithRolls: StarWithRolls, dice: DiceGen): Gen[List[(Orbit, Star)]] =
+    toTuple2Gen(companionOrbitGenerator(), otherStarGenerator(mainStarWithRolls, dice)).map(List(_))
 
-  private def handleTrinaryNature(mainStarWithRolls: StarWithRolls, dice: DiceGen): Gen[List[(Orbit, Star)]] = Gen.sequence(
-    List(0, 4)
-      .map(orbitAdjust => (companionOrbitGenerator(dice + orbitAdjust), otherStarGenerator(mainStarWithRolls, dice)))
-      .map { case (og, sg) =>
-        toTuple2Gen(og, sg)
-      },
-  )
+  private def handleTrinaryNature(mainStarWithRolls: StarWithRolls, dice: DiceGen): Gen[List[(Orbit, Star)]] = Gen
+    .sequence(
+      List(0, 4)
+        .map(orbitAdjust => (companionOrbitGenerator(dice + orbitAdjust), otherStarGenerator(mainStarWithRolls, dice)))
+        .map { case (og, sg) =>
+          toTuple2Gen(og, sg)
+        },
+    )
 
   def generate(uwp: Option[UWP] = none, pbg: Option[PBG] = none, dice: DiceGen = `2d6`): Gen[StarSystem] =
     for {

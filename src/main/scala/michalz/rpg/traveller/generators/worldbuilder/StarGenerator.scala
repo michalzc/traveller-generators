@@ -41,23 +41,31 @@ object StarGenerator {
 
   def starSubTypeGen(starType: StarType, isPrimary: Boolean): Gen[Int] =
     (starType, isPrimary) match {
-      case (StarType.M, true) => starSubTypeMPrimary()
+      case (StarType.M, true) =>
+        starSubTypeMPrimary()
       case (StarType.K, _) =>
-        starSubTypeNumeric().map(n => if (n >= 5) n - 5 else n)
-      case _ => starSubTypeNumeric()
+        starSubTypeNumeric().map(n =>
+          if (n >= 5)
+            n - 5
+          else
+            n,
+        )
+      case _ =>
+        starSubTypeNumeric()
     }
 
-  def generatePrimaryStar(): Gen[StarLike] = for {
-    StarTypeAndClassGen.StarTypeAndClass(starType, starClass) <-
-      StarTypeAndClassGen.primaryStarGen()
-    starSubType <- starSubTypeGen(starType, isPrimary = true)
-  } yield Star(starType, starClass, starSubType.some)
+  def generatePrimaryStar(): Gen[StarLike] =
+    for {
+      StarTypeAndClassGen.StarTypeAndClass(starType, starClass) <- StarTypeAndClassGen.primaryStarGen()
+      starSubType                                               <- starSubTypeGen(starType, isPrimary = true)
+    } yield Star(starType, starClass, starSubType.some)
 
-  def genStar(
-      genType: StarGeneratorType,
-      diceGen: DiceGen = Dice.`2d6`,
-  ): Gen[StarLike] = genType match
-    case StarGeneratorType.Primary        => generatePrimaryStar()
-    case StarGeneratorType.PrimaryUnusual => ???
-    case StarGeneratorType.Additional     => ???
+  def genStar(genType: StarGeneratorType, diceGen: DiceGen = Dice.`2d6`): Gen[StarLike] =
+    genType match
+      case StarGeneratorType.Primary =>
+        generatePrimaryStar()
+      case StarGeneratorType.PrimaryUnusual =>
+        ???
+      case StarGeneratorType.Additional =>
+        ???
 }

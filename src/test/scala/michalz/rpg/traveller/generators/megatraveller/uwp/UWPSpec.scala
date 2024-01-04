@@ -20,7 +20,8 @@ class UWPSpec extends AnyFunSpec with Matchers {
           uwp.government shouldBe Government.`9`
           uwp.lawLevel shouldBe LawLevel.`9`
           uwp.technologyLevel shouldBe TechnologyLevel.`C`
-        case None => fail("Parsing returned None for valid UWP string")
+        case None =>
+          fail("Parsing returned None for valid UWP string")
       }
     }
   }

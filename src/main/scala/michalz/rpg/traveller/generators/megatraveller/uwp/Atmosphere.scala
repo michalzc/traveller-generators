@@ -4,11 +4,8 @@ import cats.syntax.either.*
 import cats.syntax.option.*
 import scala.util.control.Exception.catching
 
-enum Atmosphere(
-    val description: String,
-    val minPressure: Option[Float],
-    val maxPressure: Option[Float],
-) extends UWPElement:
+enum Atmosphere(val description: String, val minPressure: Option[Float], val maxPressure: Option[Float])
+    extends UWPElement:
 
   case `0` extends Atmosphere("Vacuum", none, 0f.some)
   case `1` extends Atmosphere("Vacuum (trace)", 0.001f.some, 0.09f.some)
@@ -28,7 +25,10 @@ enum Atmosphere(
   case `F` extends Atmosphere("Exotic (thin, low)", none, none)
 
 object Atmosphere:
-  def fromSymbol(symbol: String): Option[Atmosphere] = (for {
-    decimal <- Either.catchNonFatal(Integer.parseInt(symbol, 16))
-    value   <- Either.catchNonFatal(Atmosphere.fromOrdinal(decimal))
-  } yield value).toOption
+  def fromSymbol(symbol: String): Option[Atmosphere] =
+    (
+      for {
+        decimal <- Either.catchNonFatal(Integer.parseInt(symbol, 16))
+        value   <- Either.catchNonFatal(Atmosphere.fromOrdinal(decimal))
+      } yield value
+    ).toOption

@@ -22,23 +22,41 @@ enum Government(val description: String) extends UWPElement:
   case `F` extends Government("Totalitarian Oligarchy")
 
 object Government {
-  def fromSymbol(symbol: String): Option[Government] = symbol match {
-    case "0" => Government.`0`.some
-    case "1" => Government.`1`.some
-    case "2" => Government.`2`.some
-    case "3" => Government.`3`.some
-    case "4" => Government.`4`.some
-    case "5" => Government.`5`.some
-    case "6" => Government.`6`.some
-    case "7" => Government.`7`.some
-    case "8" => Government.`8`.some
-    case "9" => Government.`9`.some
-    case "A" => Government.`A`.some
-    case "B" => Government.`B`.some
-    case "C" => Government.`C`.some
-    case "D" => Government.`D`.some
-    case "E" => Government.`E`.some
-    case "F" => Government.`F`.some
-    case _   => none[Government]
-  }
+  def fromSymbol(symbol: String): Option[Government] =
+    symbol match {
+      case "0" =>
+        Government.`0`.some
+      case "1" =>
+        Government.`1`.some
+      case "2" =>
+        Government.`2`.some
+      case "3" =>
+        Government.`3`.some
+      case "4" =>
+        Government.`4`.some
+      case "5" =>
+        Government.`5`.some
+      case "6" =>
+        Government.`6`.some
+      case "7" =>
+        Government.`7`.some
+      case "8" =>
+        Government.`8`.some
+      case "9" =>
+        Government.`9`.some
+      case "A" =>
+        Government.`A`.some
+      case "B" =>
+        Government.`B`.some
+      case "C" =>
+        Government.`C`.some
+      case "D" =>
+        Government.`D`.some
+      case "E" =>
+        Government.`E`.some
+      case "F" =>
+        Government.`F`.some
+      case _ =>
+        none[Government]
+    }
 }

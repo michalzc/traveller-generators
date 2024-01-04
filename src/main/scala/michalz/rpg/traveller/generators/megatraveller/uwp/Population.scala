@@ -17,16 +17,29 @@ enum Population(val description: String, val min: Long, val max: Long) extends U
   case `A` extends Population("High (ten of billions)", 10000000000L, 99999999999L)
 
 object Population:
-  def fromSymbol(symbol: String): Option[Population] = symbol match
-    case "0" => `0`.some
-    case "1" => `1`.some
-    case "2" => `2`.some
-    case "3" => `3`.some
-    case "4" => `4`.some
-    case "5" => `5`.some
-    case "6" => `6`.some
-    case "7" => `7`.some
-    case "8" => `8`.some
-    case "9" => `9`.some
-    case "A" => `A`.some
-    case _   => none[Population]
+  def fromSymbol(symbol: String): Option[Population] =
+    symbol match
+      case "0" =>
+        `0`.some
+      case "1" =>
+        `1`.some
+      case "2" =>
+        `2`.some
+      case "3" =>
+        `3`.some
+      case "4" =>
+        `4`.some
+      case "5" =>
+        `5`.some
+      case "6" =>
+        `6`.some
+      case "7" =>
+        `7`.some
+      case "8" =>
+        `8`.some
+      case "9" =>
+        `9`.some
+      case "A" =>
+        `A`.some
+      case _ =>
+        none[Population]

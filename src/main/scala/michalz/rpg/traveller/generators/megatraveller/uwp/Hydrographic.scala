@@ -22,11 +22,10 @@ enum Hydrographic(
   case `A` extends Hydrographic("Water World", 100, 95, 100)
 
 object Hydrographic:
-  def fromSymbol(symbol: String): Option[Hydrographic] = (for {
-    decimalRepresentation <- Either.catchNonFatal(
-      Integer.parseInt(symbol, 16),
-    )
-    value <- Either.catchNonFatal(
-      Hydrographic.fromOrdinal(decimalRepresentation),
-    )
-  } yield value).toOption
+  def fromSymbol(symbol: String): Option[Hydrographic] =
+    (
+      for {
+        decimalRepresentation <- Either.catchNonFatal(Integer.parseInt(symbol, 16))
+        value                 <- Either.catchNonFatal(Hydrographic.fromOrdinal(decimalRepresentation))
+      } yield value
+    ).toOption
